@@ -33,7 +33,15 @@ const ssrConfig = {
         test:/\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
+      },
+      {
+      test: /\.(png|jpg|gif|svg|woff2?|ttf|svg|eot)$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: '[name].[hash].[ext]'
       }
+    }
     ]
   },
   plugins: [
@@ -69,7 +77,5 @@ if (isDev) {
   // add a hash for cash busting.
   ssrConfig.output.filename = '[name].[chunkhash].bundle.js'
 }
-
-
 
 module.exports = ssrConfig
