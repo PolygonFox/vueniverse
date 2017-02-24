@@ -1,4 +1,8 @@
+import Vue from 'vue'
 import { app, router, store } from './app'
+
+const _app = new Vue(app)
+const meta = _app.$meta()
 
 export default context => {
   // set router's location
@@ -12,6 +16,7 @@ export default context => {
     // set initial store on context
     // the request handler will inline the state in the HTML response.
     context.state = store.state
-    return app
+    context.meta = meta
+    return _app
   })
 }

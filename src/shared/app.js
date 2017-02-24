@@ -6,10 +6,10 @@ import store from './vuex/store'
 
 sync(store, router)
 
-const app = new Vue({
+const app = {
   router,
   store,
   ...App
-})
+}
 
 export { app, router, store }

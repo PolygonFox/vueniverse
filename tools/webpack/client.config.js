@@ -17,7 +17,8 @@ const clientConfig = {
       'vue',
       'vuex',
       'vue-router',
-      'vuex-router-sync'
+      'vuex-router-sync',
+      'vue-meta'
     ]
   },
   output: {
@@ -54,9 +55,10 @@ const clientConfig = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        CLIENT: true,
-        SERVER: true
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+        VUE_ENV: '"client"',
+        CLIENT_BUILD: true,
+        SSR_BUILD: false
       }
     }),
     new webpack.optimize.CommonsChunkPlugin('vendor'),
@@ -94,6 +96,7 @@ if (isDev) {
   clientConfig.devtool = 'inline-source-map'
 } else {
   // add a hash for cash busting.
+  clientConfig.output.chunkFilename = '[name]-[chunkhash].js'
   clientConfig.output.filename = '[name].[hash].bundle.js'
 }
 

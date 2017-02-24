@@ -8,6 +8,9 @@
 <script>
 import Counter from '../components/Counter.vue'
 export default {
+  metaInfo: {
+    title: 'Home'
+  },
   data() {
     return {
       name: 'Home'

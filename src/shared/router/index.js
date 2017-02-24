@@ -1,36 +1,27 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import {
-  About,
-  Home
-} from '../views'
-
-// import {
-//   AsyncHome,
-//   AsyncAbout
-// } from '../views'
+import Meta from 'vue-meta'
 
 Vue.use(VueRouter)
+Vue.use(Meta)
+
+// for code splitting
+let view = name => {
+  return process.env.CLIENT_BUILD ?
+  () => System.import('../views/' + name + '.vue') :
+  require('../views/' + name + '.vue')
+}
 
 const routes = [
   {
     path: '/',
-    component: Home
+    component: view('Home')
   },
   {
     path: '/about',
-    component: About
+    component: view('About')
   }
 ]
-
-
-
-// function view(name) {
-//   let path = '../views/' + name + '.vue'
-//     return function(resolve) {
-//       require(['../views'], resolve)
-//     }
-// }
 
 const router = new VueRouter({
   mode: 'history',

@@ -15,7 +15,8 @@ const ssrConfig = {
       'vue',
       'vuex',
       'vue-router',
-      'vuex-router-sync'
+      'vuex-router-sync',
+      'vue-meta'
     ]
   },
   output: {
@@ -47,9 +48,10 @@ const ssrConfig = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        CLIENT: false,
-        SERVER: true
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+        VUE_ENV: '"server"',
+        CLIENT_BUILD: false,
+        SSR_BUILD: true
       }
     }),
     new VueSSRPlugin({
@@ -75,6 +77,7 @@ if (isDev) {
   ssrConfig.output.filename = '[name].bundle.js'
 } else {
   // add a hash for cash busting.
+  clientConfig.output.chunkFilename = '[name]-[chunkhash].js'
   ssrConfig.output.filename = '[name].[chunkhash].bundle.js'
 }
 

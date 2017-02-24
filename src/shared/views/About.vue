@@ -8,6 +8,9 @@
 <script>
 import StyledButton from '../components/StyledButton.vue'
 export default {
+  metaInfo: {
+    title: 'About'
+  },
   data() {
     return {
       name: 'About'

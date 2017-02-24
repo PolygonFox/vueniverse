@@ -1,17 +1,18 @@
 <template lang="html">
   <div id="app">
-    <nav id="nav">
-      <router-link class="link" to="/">Home</router-link>
-      <router-link class="link" to="/about">About</router-link>
-    </nav>
-
+    <nav-bar></nav-bar>
     <router-view></router-view>
   </div>
 </template>
 
-<!-- this is just a root component that holds out store, no need for scripts,
-unless you wanted to include some components -->
-
+<script>
+  import { NavBar } from './components'
+  export default {
+    components: {
+      NavBar
+    }
+  }
+</script>
 <style lang="css">
   #app {
     text-align: center

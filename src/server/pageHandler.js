@@ -48,6 +48,12 @@ export default (req, res) => {
 
   const htmlStream = new HTMLStream({ template, context })
 
+  // handle vue-meta.
+  htmlStream.on('beforeStart', () => {
+    const meta = context.meta.inject()
+    context.head = (context.head || '') + meta.title.text()
+  })
+
   renderStream
     .on('error', err => {
         if (err && err.code === 404) {
