@@ -1,14 +1,12 @@
 <template lang="html">
   <div id="home">
     <h2 class="text">This is the {{name}} page</h2>
-    <img :src="logo">
     <counter></counter>
   </div>
 </template>
 
 <script>
 import Counter from '../components/Counter.vue'
-import ryanLogo from './Ryan-Lindskog-Logo-Small.png'
 export default {
   metaInfo: {
     title: 'Home'
@@ -16,7 +14,6 @@ export default {
   data() {
     return {
       name: 'Home',
-      logo: ryanLogo
     }
   },
   components: { Counter }

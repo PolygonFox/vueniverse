@@ -6,6 +6,9 @@ const serverConfig = require('../webpack/server.config')
 const webpack = require('webpack')
 const serverCompiler = webpack(serverConfig)
 
+const ssrConfig = require('../webpack/ssr.config')
+const ssrCompiler = webpack(serverConfig)
+
 function startServer() {
   const serverFileName = serverCompiler.options.output.filename.replace(
     '[name]',
@@ -25,3 +28,4 @@ const startServerOnce = once((err, stats) => {
 })
 
 serverCompiler.watch({}, startServerOnce)
+ssrCompiler.watch({}, startServerOnce)
