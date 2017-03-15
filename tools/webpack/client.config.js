@@ -22,7 +22,7 @@ const clientConfig = {
     ]
   },
   output: {
-    path: path.resolve(rootDir.get(), 'dist', 'client'),
+    path: path.resolve(rootDir.get(), 'dist'),
     publicPath: '/'
   },
   module: {
@@ -40,7 +40,7 @@ const clientConfig = {
       test: /\.(png|jpg|gif|svg|woff2?|ttf|svg|eot)$/,
       loader: 'url-loader',
       options: {
-        limit: 10000,
+        limit: 100,
         name: '[name].[hash].[ext]'
       }
     }
@@ -101,3 +101,42 @@ if (isDev) {
 }
 
 module.exports = clientConfig
+// const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+// const baseConfig = require('./base.config')
+// const path = require('path')
+// const rootDir = require('app-root-dir')
+// const webpack = require('webpack')
+// const { isDev, isProd } = require('../../config')
+
+// const clientConfig = Object.assign({}, baseConfig, {
+//   entry: Object.assign({}, baseConfig.entry, {
+//     client: [
+//       path.resolve(rootDir.get(), 'src', 'client', 'index')
+//     ]
+//   }),
+//   output: Object.assign({}, baseConfig.output, {
+//     path: path.resolve(rootDir.get(), 'dist', 'client')
+//   }),
+//   plugins: (baseConfig.plugins || []).concat([
+//     new webpack.DefinePlugin({
+//       'process.env': {
+//         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+//         VUE_ENV: '"client"',
+//         CLIENT_BUILD: true,
+//         SSR_BUILD: false
+//       }
+//     }),
+//   ])
+// })
+
+// if (isDev) {
+//   clientConfig.entry.client.unshift('webpack-hot-middleware/client')
+
+//   clientConfig.plugins.unshift(
+//     new FriendlyErrorsWebpackPlugin({
+//       compilationSuccessInfo: {
+//         messages: ['[client]'],
+//       }
+//     })
+//   )
+// }

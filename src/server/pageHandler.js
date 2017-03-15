@@ -9,7 +9,7 @@ import { createBundleRenderer } from 'vue-server-renderer'
 // create the renderer using memory-fs or native fs, depending on NODE_ENV
 const createRenderer = fs => {
   const jsonBundle = fs.readFileSync(
-    path.resolve(rootDir.get(), 'dist', 'shared', 'ssr.bundle.json'), 'UTF-8'
+    path.resolve(rootDir.get(), 'dist', 'ssr.bundle.json'), 'UTF-8'
   )
   const ssrBundle = JSON.parse(jsonBundle)
   const ssrCode = ssrBundle.files[ssrBundle.entry]
@@ -38,7 +38,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // indexTemplate
 const template = fs.readFileSync(
-  path.resolve(rootDir.get(), 'dist', 'client', 'index.template.html'), 'UTF-8'
+  path.resolve(rootDir.get(), 'dist', 'index.template.html'), 'UTF-8'
 )
 
 // the request handler...

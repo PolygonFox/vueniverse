@@ -15,7 +15,7 @@ const serverConfig = {
   },
   output: {
     libraryTarget: "commonjs2",
-    path: path.resolve(rootDir.get(), 'dist', 'server'),
+    path: path.resolve(rootDir.get(), 'dist'),
     filename: '[name].bundle.js',
     publicPath: '/'
   },

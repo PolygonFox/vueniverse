@@ -21,7 +21,7 @@ const ssrConfig = {
   },
   output: {
     libraryTarget: 'commonjs2',
-    path: path.resolve(rootDir.get(), 'dist', 'shared'),
+    path: path.resolve(rootDir.get(), 'dist'),
   },
   externals: [NodeExternals()],
   module: {
@@ -39,7 +39,7 @@ const ssrConfig = {
       test: /\.(png|jpg|gif|svg|woff2?|ttf|svg|eot)$/,
       loader: 'url-loader',
       options: {
-        limit: 10000,
+        limit: 100,
         name: '[name].[hash].[ext]'
       }
     }

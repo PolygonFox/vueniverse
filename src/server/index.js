@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 // middleware
-app.use(express.static(path.resolve(rootDir.get(), 'dist', 'client')))
+app.use(express.static(path.resolve(rootDir.get(), 'client')))
 
 // the api routes
 app.use('/api', api)

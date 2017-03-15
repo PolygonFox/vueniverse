@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node ./dist/server/server.bundle",
+    "start": "node ./dist/server.bundle",
     "build": "rimraf dist && npm run build-ssr && run-p build-server build-client",
     "dev": "run-s build-dev dev-server",
     "bs": "run-s build start",
