@@ -4,16 +4,9 @@ import path from 'path'
 import rootDir from 'app-root-dir'
 import { createBundleRenderer } from 'vue-server-renderer'
 
-// import ssrBundle from '../../dist/shared/ssr.bundle.json'
-
 // create the renderer using memory-fs or native fs, depending on NODE_ENV
 const createRenderer = fs => {
-  const jsonBundle = fs.readFileSync(
-    path.resolve(rootDir.get(), 'dist', 'ssr.bundle.json'), 'UTF-8'
-  )
-  const ssrBundle = JSON.parse(jsonBundle)
-  const ssrCode = ssrBundle.files[ssrBundle.entry]
-  return createBundleRenderer(ssrCode)
+  return createBundleRenderer(path.resolve(rootDir.get(), 'dist', 'ssr.bundle.json'))
 }
 
 // watch SSR bundle in memory-fs if in development
